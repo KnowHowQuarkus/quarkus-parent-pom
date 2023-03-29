@@ -25,7 +25,7 @@ steps :
       DEPLOYER_PASSWORD :
         from_secret : DEPLOYER_PASSWORD
     commands :
-      - mvn clean package -Dmaven.javadoc.skip=true -DskipTests=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -DskipTests=true -Dcheckstyle.skip=true --file pom.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD  -s ../maven-settings.xml
+      - mvn package -Dstyle.color=always
 
 
   - name : publish-snapshot-jar
@@ -40,11 +40,12 @@ steps :
       DEPLOYER_PASSWORD :
         from_secret : DEPLOYER_PASSWORD
     commands :
-      - mvn deploy -DskipTests=true -Dcheckstyle.skip=true -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD  -s ../maven-settings.xml  --file pom.xml -DaltDeploymentRepository=ujar-snapshots-repository::default::https://nexus.c2a2.com/repository/maven-snapshots
+      - mvn deploy -DskipTests -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD  -s ../maven-settings.xml  --file pom.xml -DaltDeploymentRepository=ujar-snapshots-repository::default::https://nexus.c2a2.com/repository/maven-snapshots
     when :
       branch :
         include :
           - "develop"
+          - "prerelease/*"
           - "*.*.x"
     depends_on :
       - build
@@ -61,7 +62,7 @@ steps :
       DEPLOYER_PASSWORD :
         from_secret : DEPLOYER_PASSWORD
     commands :
-      - mvn deploy -DskipTests=true -Dcheckstyle.skip=true -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD  -s ../maven-settings.xml  --file pom.xml -DaltDeploymentRepository=ujar-releases-repository::default::https://nexus.c2a2.com/repository/maven-releases
+      - mvn deploy -DskipTests -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD  -s ../maven-settings.xml  --file pom.xml -DaltDeploymentRepository=ujar-releases-repository::default::https://nexus.c2a2.com/repository/maven-releases
     when :
       ref :
         - "refs/tags/*"
