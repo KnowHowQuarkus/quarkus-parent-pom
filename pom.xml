@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ujar.quarkus</groupId>
-    <artifactId>ujar-quarkus-parent-pom</artifactId>
+    <artifactId>quarkus-parent-pom</artifactId>
     <version>23.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>ujar-quarkus-parent-pom</name>
+    <name>quarkus-parent-pom</name>
     <description>Default configurations for complete dependency tree to quickly build Quarkus project.</description>
     <licenses>
         <license>
@@ -33,7 +33,7 @@
     </developers>
 
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -48,38 +48,39 @@
 
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>2.16.5.Final</quarkus.platform.version>
+        <quarkus.platform.version>3.0.1.Final</quarkus.platform.version>
         <lombok.version>1.18.26</lombok.version>
-        <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-        <testcontainers.version>1.17.6</testcontainers.version>
+        <surefire-plugin.version>3.0.0</surefire-plugin.version>
+        <testcontainers.version>1.18.0</testcontainers.version>
         <rest-assured.version>5.3.0</rest-assured.version>
         <unirest-java.version>3.14.2</unirest-java.version>
 
-        <gaul.modernizer-maven-plugin.version>2.5.0</gaul.modernizer-maven-plugin.version>
-        <codehaus.versions-maven-plugin.version>2.8.1</codehaus.versions-maven-plugin.version>
-        <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
-        <maven-checkstyle-plugin.version>3.2.1</maven-checkstyle-plugin.version>
+        <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
+        <codehaus.versions-maven-plugin.version>2.15.0</codehaus.versions-maven-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <maven-checkstyle-plugin.version>3.2.2</maven-checkstyle-plugin.version>
         <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
         <jsonschema2pojo-maven-plugin.version>1.2.1</jsonschema2pojo-maven-plugin.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
-        <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
-        <puppycrawl.checkstyle.version>10.7.0</puppycrawl.checkstyle.version>
+        <build-helper-maven-plugin.version>3.3.1</build-helper-maven-plugin.version>
+        <puppycrawl.checkstyle.version>10.10.0</puppycrawl.checkstyle.version>
         <git-commit-id-plugin.version>5.0.0</git-commit-id-plugin.version>
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.ujar.quarkus</groupId>
-                <artifactId>ujar-quarkus-build</artifactId>
+                <artifactId>quarkus-build</artifactId>
                 <version>${ujar.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.ujar.quarkus</groupId>
-                <artifactId>ujar-quarkus-restful</artifactId>
+                <artifactId>quarkus-restful</artifactId>
                 <version>${ujar.version}</version>
             </dependency>
             <dependency>
@@ -155,8 +156,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <release>${java.version}</release>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
@@ -189,7 +193,7 @@
                 <plugin>
                     <groupId>org.openapitools</groupId>
                     <artifactId>openapi-generator-maven-plugin</artifactId>
-                    <version>6.4.0</version>
+                    <version>6.5.0</version>
                     <executions>
                         <execution>
                             <goals>
@@ -277,14 +281,14 @@
                             <version>${puppycrawl.checkstyle.version}</version>
                         </dependency>
                         <dependency>
-                            <groupId>org.ujar.codequality</groupId>
-                            <artifactId>ujar-code-quality-checkstyle</artifactId>
+                            <groupId>org.ujar.build</groupId>
+                            <artifactId>checkstyle-utils</artifactId>
                             <version>${ujar.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
                         <sourceDirectories>${basedir}/src</sourceDirectories>
-                        <configLocation>ujar_checks.xml</configLocation>
+                        <configLocation>svc-common-checkstyle.xml</configLocation>
                         <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     </configuration>
                     <executions>
@@ -323,14 +327,6 @@
                         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
                         <addOutputDirectory>false</addOutputDirectory>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <phase>generate-sources</phase>
-                            <goals>
-                                <goal>delombok</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -350,6 +346,11 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>4.9.10</version>
                 </plugin>
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>

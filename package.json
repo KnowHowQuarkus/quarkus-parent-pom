@@ -1,5 +1,5 @@
 {
-    "name": "ujar-quarkus-parent-pom",
+    "name": "quarkus-parent-pom",
     "version": "23.0.0",
     "description": "Provide an optional Git commit hooks.",
     "private": true,
