@@ -64,6 +64,7 @@
         <testcontainers.version>1.18.1</testcontainers.version>
         <rest-assured.version>5.3.0</rest-assured.version>
         <unirest-java.version>3.14.2</unirest-java.version>
+        <mockito.version>5.2.0</mockito.version>
 
         <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.15.0</codehaus.versions-maven-plugin.version>
@@ -171,6 +172,11 @@
                 <groupId>com.github.loki4j</groupId>
                 <artifactId>loki-logback-appender</artifactId>
                 <version>${loki-logback-appender.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-inline</artifactId>
+                <version>${mockito.version}</version>
             </dependency>
 
             <dependency>
