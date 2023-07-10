@@ -63,7 +63,7 @@
         <surefire-plugin.version>3.0.0</surefire-plugin.version>
         <testcontainers.version>1.18.3</testcontainers.version>
         <rest-assured.version>5.3.1</rest-assured.version>
-        <unirest-java.version>3.14.4</unirest-java.version>
+        <unirest-java.version>3.14.5</unirest-java.version>
         <mockito.version>5.2.0</mockito.version>
 
         <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
