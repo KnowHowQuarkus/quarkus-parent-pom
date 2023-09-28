@@ -67,7 +67,7 @@
         <mockito.version>5.2.0</mockito.version>
 
         <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
-        <codehaus.versions-maven-plugin.version>2.16.0</codehaus.versions-maven-plugin.version>
+        <codehaus.versions-maven-plugin.version>2.16.1</codehaus.versions-maven-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
