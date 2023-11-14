@@ -67,7 +67,7 @@
         <unirest-java.version>3.14.5</unirest-java.version>
         <mockito.version>5.2.0</mockito.version>
 
-        <openapi-generator-maven-plugin.version>7.0.1</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.1.0</openapi-generator-maven-plugin.version>
         <gaul.modernizer-maven-plugin.version>2.7.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.16.1</codehaus.versions-maven-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -284,7 +284,7 @@
                 <plugin>
                     <groupId>org.openapitools</groupId>
                     <artifactId>openapi-generator-maven-plugin</artifactId>
-                    <version>7.0.1</version>
+                    <version>7.1.0</version>
                     <executions>
                         <execution>
                             <goals>
