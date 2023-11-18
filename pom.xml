@@ -62,7 +62,7 @@
         <loki-logback-appender.version>1.4.2</loki-logback-appender.version>
 
         <surefire-plugin.version>3.0.0</surefire-plugin.version>
-        <testcontainers.version>1.19.1</testcontainers.version>
+        <testcontainers.version>1.19.2</testcontainers.version>
         <rest-assured.version>5.3.2</rest-assured.version>
         <unirest-java.version>3.14.5</unirest-java.version>
         <mockito.version>5.2.0</mockito.version>
