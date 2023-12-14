@@ -9,7 +9,7 @@ To use it as your parent POM using the following snippet:
 
 ```xml
   <parent>
-    <groupId>dev.knowhowto.quarkus</groupId>
+    <groupId>org.iqkv.quarkus</groupId>
     <artifactId>quarkus-parent-pom</artifactId>
     <version>23.0.0-SNAPSHOT</version>
   </parent>
