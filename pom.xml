@@ -5,7 +5,7 @@
 
     <groupId>org.iqkv.quarkus</groupId>
     <artifactId>quarkus-parent-pom</artifactId>
-    <version>23.0.0-SNAPSHOT</version>
+    <version>24.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>quarkus-parent-pom</name>
@@ -44,7 +44,7 @@
         <sonar.exclusions>**/generated/**/*,**/lib/**/*,**/org/**/*</sonar.exclusions>
         <sonar.coverage.exclusions>**/generated/**/*,**/lib/**/*,**/org/**/*</sonar.coverage.exclusions>
 
-        <knowhowto.dev.quarkus.version>23.0.0-SNAPSHOT</knowhowto.dev.quarkus.version>
+        <knowhowto.dev.quarkus.version>24.0.0-SNAPSHOT</knowhowto.dev.quarkus.version>
 
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
